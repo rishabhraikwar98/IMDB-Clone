@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 import Cards from "../card/Card"
 
 const MovieList = () => {
-    
     const [movieList, setMovieList] = useState([])
     const {type} = useParams()
 
@@ -24,11 +23,11 @@ const MovieList = () => {
 
     return (
         <div className="movie__list">
-            <h2 className="list__title">{(type ? type : "POPULAR").toUpperCase()}</h2>
+            <h2 className="list__title">{(type ? type.replace("_"," ") : "POPULAR").toUpperCase()}</h2>
             <div className="list__cards">
                 {
                     movieList.map(movie => (
-                        <Cards movie={movie} />
+                        <Cards movie={movie} type={type} />
                     ))
                 }
             </div>
